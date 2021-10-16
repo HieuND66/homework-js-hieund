@@ -62,16 +62,54 @@ function cau2_2() {
 
   // Câu 4:
 
-  const show = document.getElementById('show_modal')
-  const full_img = document.getElementsByClassName('full-img')[0]
-  show_img = (a) => {
-      full_img.src = `img/full/${a.alt}.jpg`
-      show.classList.add('open')
-      
-  } 
-  show.omclick = () => {
-    show.classList.remove('open')
-  }
-  show.onclick = () => {
-      show.classList.remove('open')
-  }
+  const modal = document.querySelector('.modal')
+  const listContainerImage = document.querySelectorAll('.img-container img')
+  const imageModal = document.querySelector('.full-img')
+
+
+  listContainerImage.forEach(element => {
+    element.addEventListener('click', function(){
+      // add class open
+      modal.classList.add('open')
+      // get attribute alt image
+      const attrImg = element.getAttribute('alt')
+      // set src img
+      imageModal.src = 'img/full/' + attrImg + '.jpg'
+    })
+  });
+
+  modal.addEventListener('click', (e) =>{
+    if(e.target.classList.contains('modal')){
+      modal.classList.remove('open')
+    }
+  })
+
+  ///Homework day 4:
+4
+const navLink = document.querySelectorAll('.nav-link')
+console.log(navLink);
+
+navLink.forEach((item) =>{
+  item.addEventListener('click', ()=>{
+    const section = document.getElementById(item.getAttribute("attr-id"))
+    console.log(section);
+    section.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    })
+  })
+})
+
+const button = document.querySelector('.btn-switch')
+const text = document.querySelector('.code_color')
+const bgSection = document.querySelector('.section_menu-color')
+
+button.addEventListener('click', ()=>{
+  const codeColor1 = Math.floor(Math.random() * 255);
+  const codeColor2 = Math.floor(Math.random() * 255);
+  const codeColor3 = Math.floor(Math.random() * 255);
+
+  bgSection.style.backgroundColor = 'rgb(' + codeColor1 +', ' + codeColor2 +', ' + codeColor3 + ')'
+  text.innerText = bgSection.style.backgroundColor
+})
+
