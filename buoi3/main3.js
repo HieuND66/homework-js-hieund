@@ -108,7 +108,6 @@ button.addEventListener('click', ()=>{
   const codeColor1 = Math.floor(Math.random() * 255);
   const codeColor2 = Math.floor(Math.random() * 255);
   const codeColor3 = Math.floor(Math.random() * 255);
-
   bgSection.style.backgroundColor = 'rgb(' + codeColor1 +', ' + codeColor2 +', ' + codeColor3 + ')'
   text.innerText = bgSection.style.backgroundColor
 })
